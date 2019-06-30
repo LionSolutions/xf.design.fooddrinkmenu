@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:model="clr-namespace:FoodDrinkMenu.Models"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="FoodDrinkMenu.Views.Burgers" BackgroundColor="#fff6f7">
+    <ContentPage.Resources>
+        <Color x:Key="TextColor">
+            #322E2D
+        </Color>
+        <x:Array Type="{x:Type model:Food}" x:Key="Foods">
+            <model:Food Name="Standard Beef" ImageSource="burger"
+                ColorHex="#fedede" Price="10" />
+            <model:Food Name="All about Green" ImageSource="burger"
+                ColorHex="#d8f8e1" Price="9" />
+            <model:Food Name="Fish Burger" ImageSource="burger"
+                ColorHex="#e9ebfe" Price="9" />
+        </x:Array>
+        <DataTemplate x:Key="FoodTemplate">
+            <ViewCell>
+                <!--      <ContentView>-->
+                <yummy:PancakeView CornerRadius="10" Margin="0,5"
+                    BackgroundColor="White">
+                    <StackLayout>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" BackgroundColor="{Binding ColorHex}"
+                                Padding="20" WidthRequest="30"
+                                HeightRequest="30">
+                                <Image Source="{Binding ImageSource}" />
+                            </Grid>
+                            <Label Text="{Binding Name}" Grid.Column="1"
+                                VerticalOptions="Center" VerticalTextAlignment="Center"
+                                FontSize="Large" Margin="10,0" />
+                            <Label Text="{Binding Price}" Grid.Column="2"
+                                VerticalOptions="Center" VerticalTextAlignment="Center"
+                                FontSize="Large" Margin="20"
+                                WidthRequest="30" HeightRequest="30" />
+                        </Grid>
+                    </StackLayout>
+                </yummy:PancakeView>
+            </ViewCell>
+            <!--            </ContentView>-->
+        </DataTemplate>
+        <Style TargetType="Image" x:Key="IconHeader">
+            <Setter Property="WidthRequest" Value="15" />
+            <Setter Property="HeightRequest" Value="15" />
+        </Style>
+    </ContentPage.Resources>
+    <Grid Margin="30,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackLayout>
+            <Label FontSize="Large" FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand" Margin="0,40,0,20"
+                TextColor="{StaticResource TextColor}" Text="Schwarts'z Burger" />
+            <Grid>
+                <StackLayout Grid.Column="0" HorizontalOptions="End"
+                    VerticalOptions="Center" Orientation="Horizontal"
+                    Padding="0,0,10,0">
+                    <Image Source="star" Style="{StaticResource IconHeader}" />
+                    <Label Text="4.3" VerticalTextAlignment="Center" />
+                </StackLayout>
+                <StackLayout Grid.Column="1" HorizontalOptions="Start"
+                    VerticalOptions="Center" Orientation="Horizontal"
+                    Padding="10,0,0,0">
+                    <Image Source="clock" Style="{StaticResource IconHeader}" />
+                    <Label Text="30 min" VerticalTextAlignment="Center" />
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="Our burgers"
+                Margin="0,40,0,0" />
+            <ListView BackgroundColor="Transparent" Grid.Row="1"
+                SeparatorVisibility="None" ItemsSource="{StaticResource Foods}"
+                ItemTemplate="{StaticResource FoodTemplate}" HasUnevenRows="true" />
+        </Grid>
+    </Grid>
+</ContentPage>
