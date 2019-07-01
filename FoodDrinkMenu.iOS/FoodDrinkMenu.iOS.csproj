@@ -138,8 +138,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="star.png" />
-    <BundleResource Include="clock.png" />
-    <BundleResource Include="burger.png" />
+    <BundleResource Include="Resources\burger.png" />
+    <BundleResource Include="Resources\clock.png" />
+    <BundleResource Include="Resources\star.png" />
+    <BundleResource Include="Resources\NanumGothic-Bold.ttf" />
+    <BundleResource Include="Resources\NanumGothic-ExtraBold.ttf" />
+    <BundleResource Include="Resources\NanumGothic-Regular.ttf" />
   </ItemGroup>
 </Project>

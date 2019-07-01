@@ -16,7 +16,6 @@
         </x:Array>
         <DataTemplate x:Key="FoodTemplate">
             <ViewCell>
-                <!--      <ContentView>-->
                 <yummy:PancakeView CornerRadius="10" Margin="0,5"
                     BackgroundColor="White">
                     <StackLayout>
@@ -32,8 +31,9 @@
                                 <Image Source="{Binding ImageSource}" />
                             </Grid>
                             <Label Text="{Binding Name}" Grid.Column="1"
-                                VerticalOptions="Center" VerticalTextAlignment="Center"
-                                FontSize="Large" Margin="10,0" />
+                                FontFamily="{StaticResource FontRegular}" VerticalOptions="Center"
+                                VerticalTextAlignment="Center" FontSize="Large"
+                                Margin="10,0" />
                             <Label Text="{Binding Price}" Grid.Column="2"
                                 VerticalOptions="Center" VerticalTextAlignment="Center"
                                 FontSize="Large" Margin="20"
@@ -42,20 +42,27 @@
                     </StackLayout>
                 </yummy:PancakeView>
             </ViewCell>
-            <!--            </ContentView>-->
         </DataTemplate>
         <Style TargetType="Image" x:Key="IconHeader">
             <Setter Property="WidthRequest" Value="15" />
             <Setter Property="HeightRequest" Value="15" />
         </Style>
+        <OnPlatform x:Key="FontBold" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="NanumGothic Bold" />
+            <On Platform="Android" Value="NanumGothic-Bold.ttf#NanumGothic-Bold" />
+        </OnPlatform>
+        <OnPlatform x:Key="FontRegular" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="NanumGothic Regular" />
+            <On Platform="Android" Value="NanumGothic-Regular.ttf#NanumGothic-Regular" />
+        </OnPlatform>
     </ContentPage.Resources>
     <Grid Margin="30,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackLayout>
-            <Label FontSize="Large" FontAttributes="Bold"
-                HorizontalOptions="CenterAndExpand" Margin="0,40,0,20"
+            <Label FontSize="Large" HorizontalOptions="CenterAndExpand"
+                Margin="0,40,0,20" FontFamily="{StaticResource FontBold}"
                 TextColor="{StaticResource TextColor}" Text="Schwarts'z Burger" />
             <Grid>
                 <StackLayout Grid.Column="0" HorizontalOptions="End"

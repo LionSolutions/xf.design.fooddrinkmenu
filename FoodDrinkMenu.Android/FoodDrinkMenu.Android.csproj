@@ -108,5 +108,10 @@
       <Name>FoodDrinkMenu</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\NanumGothic-Bold.ttf" />
+    <AndroidAsset Include="Assets\NanumGothic-ExtraBold.ttf" />
+    <AndroidAsset Include="Assets\NanumGothic-Regular.ttf" />
+  </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
