@@ -124,7 +124,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.540366" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms.PancakeView">
       <Version>1.0.21</Version>
@@ -144,5 +144,7 @@
     <BundleResource Include="Resources\NanumGothic-Bold.ttf" />
     <BundleResource Include="Resources\NanumGothic-ExtraBold.ttf" />
     <BundleResource Include="Resources\NanumGothic-Regular.ttf" />
+    <BundleResource Include="Resources\salad.png" />
+    <BundleResource Include="Resources\fries.png" />
   </ItemGroup>
 </Project>

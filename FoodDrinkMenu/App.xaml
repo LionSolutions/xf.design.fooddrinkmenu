@@ -1,7 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:FoodDrinkMenu.Models" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     mc:Ignorable="d" x:Class="FoodDrinkMenu.App">
     <Application.Resources>
+        <!--        Variables-->
+        <Color x:Key="TitleColor">
+            #322E2D
+        </Color>
+        <Color x:Key="SubtitleColor">
+            #433633
+        </Color>
+        <x:Array Type="{x:Type model:Food}" x:Key="Foods">
+            <model:Food Name="Standard Beef" ImageSource="burger"
+                ColorHex="#fedede" Price="€10" />
+            <model:Food Name="All about Green" ImageSource="burger"
+                ColorHex="#d8f8e1" Price="€9" />
+            <model:Food Name="Fish Burger" ImageSource="burger"
+                ColorHex="#e9ebfe" Price="€9" />
+        </x:Array>
+        <x:Array Type="{x:Type model:Food}" x:Key="Sides">
+            <model:Food Name="French fries" ImageSource="fries"
+                ColorHex="#fedede" Price="€10" />
+            <model:Food Name="Green salad" ImageSource="salad"
+                ColorHex="#d8f8e1" Price="€3" />
+        </x:Array>
+        <!--        Variables-->
+        <!--        Templates-->
+        <DataTemplate x:Key="FoodTemplate">
+            <ViewCell>
+                <yummy:PancakeView CornerRadius="10" Margin="0,5"
+                    BackgroundColor="White">
+                    <StackLayout>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" BackgroundColor="{Binding ColorHex}"
+                                WidthRequest="80" HeightRequest="80">
+                                <Image Source="{Binding ImageSource}" Margin="20" />
+                            </Grid>
+                            <Label Text="{Binding Name}" Grid.Column="1"
+                                FontFamily="{StaticResource FontRegular}" VerticalOptions="Center"
+                                VerticalTextAlignment="Center" FontSize="Large"
+                                Margin="10,0" />
+                            <Label Text="{Binding Price}" Grid.Column="2"
+                                FontFamily="{StaticResource FontRegular}" VerticalOptions="Center"
+                                VerticalTextAlignment="Center" FontSize="Large"
+                                Margin="20" />
+                        </Grid>
+                    </StackLayout>
+                </yummy:PancakeView>
+            </ViewCell>
+        </DataTemplate>
+        <!--        Templates-->
+        <!--        OnPlatform-->
+        <OnPlatform x:Key="FontBold" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="NanumGothicBold" />
+            <On Platform="Android" Value="NanumGothic-Bold.ttf#NanumGothic-Bold" />
+        </OnPlatform>
+        <OnPlatform x:Key="FontRegular" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="NanumGothic" />
+            <On Platform="Android" Value="NanumGothic-Regular.ttf#NanumGothic-Regular" />
+        </OnPlatform>
+        <!--        OnPlatform-->
+        <!--        Styles-->
+        <Style TargetType="Image" x:Key="IconHeader">
+            <Setter Property="WidthRequest" Value="15" />
+            <Setter Property="HeightRequest" Value="15" />
+        </Style>
+        <Style TargetType="Label" x:Key="Subtitle">
+            <Setter Property="TextColor" Value="{StaticResource SubtitleColor}" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontFamily" Value="{StaticResource FontRegular}" />
+        </Style>
+        <!--        Styles-->
     </Application.Resources>
 </Application>
